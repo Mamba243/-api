@@ -2,6 +2,8 @@
 const Koa = require('koa')
 const {koaBody} = require('koa-body')
 
+const errHandler = require('./errHandler')
+
 
 const userRouter = require('../router/user.route')
 
@@ -12,4 +14,5 @@ app.use(koaBody());
 // 注册路由
 app.use(userRouter.routes())
 
+app.on('error',errHandler)
 module.exports = app
